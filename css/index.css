@@ -66,6 +66,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.navLinkButtonSelected {
+    color: var(--accentColor) !important;
+    font-weight: bold;
+}
+
 .steps {
     display: flex;
     align-items: center;
@@ -82,7 +87,7 @@ a:hover {
     padding: 0 0.5rem;
 }
 
-.stepCard h2, .stepCard p {
+.stepCard h2, .stepCard p, .description {
     text-align: left;
     margin-top: 0.0625rem;
 }
@@ -103,20 +108,21 @@ a:hover {
         align-items: baseline;
         align-content: stretch;
         justify-content: space-between;
+        border-bottom: 1px solid #333;
     }
 
     .image {
         width: 39vw;
-        height: calc(100vh - 6rem);
-        background-color: #333;
+        height: calc(100vh - 5rem);
     }
 
     .stepsContainer {
         width: 25vw;
-        height: calc(100vh - 6rem);
+        height: calc(100vh - 5rem);
         display: flex;
         align-items: center;
         flex-direction: column;
+        border-left: 1px solid #333;
     }
 
     .stepCard {
@@ -125,17 +131,27 @@ a:hover {
 
     .steps {
         width: 23vw;
-        height: calc(100vh - 8rem);
+        height: calc(100vh - 7rem);
         position: relative;
         margin: 0.5rem;
         display: flex;
         flex-direction: column;
     }
 
-    .description {
+    .descriptionContainer {
         width: 35vw;
-        height: calc(100vh - 6rem);
-        background-color: #777;
+        height: calc(100vh - 5rem);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-left: 1px solid #333;
+    }
+
+    .description {
+        width: 33vw;
+        height: calc(100vh - 7rem);
+        position: relative;
+        margin: 0.5rem;
     }
 }
 
@@ -150,8 +166,7 @@ a:hover {
 
     .image {
         width: 100%;
-        height: calc(100vh - 6rem);
-        background-color: #333;
+        height: calc(100vh - 10rem);
     }
 
     .mobileHidden {
@@ -164,6 +179,7 @@ a:hover {
         display: flex;
         align-items: center;
         flex-direction: column;
+        border-top: 1px solid #333;
     }
 
     .steps {
@@ -179,9 +195,23 @@ a:hover {
         max-height: 8rem;
     }
 
-    .description {
+    .descriptionContainer {
         width: 100%;
         height: 45vh;
-        background-color: #777;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-top: 1px solid #333;
+    }
+
+    .description {
+        width: 100%;
+        height: 43vh;
+        position: relative;
+        margin: 0.5rem;
+    }
+
+    .mobileMarginAdd {
+        margin-left: 0.5rem;
     }
 }
