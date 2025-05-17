@@ -1,6 +1,7 @@
 :root {
     --accentColor: #00a86d;
     --link: #0090a8;
+    --tertiary: #9966cc;
     --semiTransparentAccent: #004429;
 }
 
@@ -29,7 +30,6 @@ a:hover {
 }
 
 .navContainer {
-    display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
@@ -37,19 +37,16 @@ a:hover {
     border-bottom: 2px solid var(--accentColor);
 }
 
-.navBar {
-    display: flex;
+.navBar, .navLinks {
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+}
+
+.navBar {
     width: 90vw;
 }
 
 .navLinks {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
     width: 15em;
 }
 
@@ -74,17 +71,12 @@ a:hover {
 .steps {
     display: flex;
     align-items: center;
-    overflow: scroll !important;
 }
 
 .stepCard {
     background-color: var(--semiTransparentAccent);
-    min-height: 8rem;
-    min-width: 16rem;
-    border: var(--semiTransparentAccent) solid 1rem;
+    border: var(--semiTransparentAccent) solid;
     border-radius: 5px;
-    margin: 0.5rem;
-    padding: 0 0.5rem;
 }
 
 .stepCard h2, .stepCard p, .description {
@@ -96,37 +88,92 @@ a:hover {
     margin-bottom: 0;
 }
 
+.selectedItem {
+    background-color: color-mix(in hsl, var(--link) 85%, #000 15%);
+    border-color: color-mix(in hsl, var(--link) 85%, #000 15%);
+}
+
+.centerFlex, .baselineFlex {
+    display: flex;
+}
+
+.centerFlex {
+    align-items: center;
+}
+
+.baselineFlex {
+    align-items: baseline;
+}
+
+.fullWidthHeight {
+    width: 100%;
+    height: 100%;
+}
+
+.descriptionInsert * {
+    text-align: left;
+    overflow: visible;
+}
+
+span.highlight {
+    color: var(--link);
+}
+
+span.subtle {
+    color: var(--accentColor);
+}
+
 @media (min-width: 1000px) {
     body {
-        max-height: 100vh;
         overflow: hidden;
     }
 
     .content {
-        display: flex;
         flex-direction: row;
-        align-items: baseline;
         align-content: stretch;
         justify-content: space-between;
         border-bottom: 1px solid #333;
     }
 
-    .image {
-        width: 39vw;
+    .imageContainer {
+        width: 38vw;
         height: calc(100vh - 5rem);
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 0.5em;
+    }
+
+    .imageSub {
+        width: 37vw;
+        height: calc(100vh - 7rem);
+    }
+
+    .imageLayers {
+        position: relative;
+        aspect-ratio: 5/7;
+        display: grid;
+        place-items: center;
+    }
+
+    .imageLayers img {
+        position: absolute;
+        object-fit: contain;
     }
 
     .stepsContainer {
         width: 25vw;
         height: calc(100vh - 5rem);
-        display: flex;
-        align-items: center;
         flex-direction: column;
         border-left: 1px solid #333;
     }
 
     .stepCard {
-        max-width: 16rem;
+        width: 20vw;
+        min-height: fit-content !important;
+        min-height: 8rem;
+        margin: 0.5vw;
+        padding: 0 0.5vw;
+        border-width: 1vw;
     }
 
     .steps {
@@ -136,13 +183,13 @@ a:hover {
         margin: 0.5rem;
         display: flex;
         flex-direction: column;
+        border-top: 1px solid #333;
+        overflow-y: scroll !important;
     }
 
     .descriptionContainer {
         width: 35vw;
         height: calc(100vh - 5rem);
-        display: flex;
-        align-items: center;
         flex-direction: column;
         border-left: 1px solid #333;
     }
@@ -152,21 +199,97 @@ a:hover {
         height: calc(100vh - 7rem);
         position: relative;
         margin: 0.5rem;
+        overflow: visible !important;
+    }
+
+    div.description > h3.mobileMarginAdd {
+        margin-top: 0;
+    }
+
+    .tooltip {
+        position: relative;
+        cursor: help;
+        text-decoration: underline !important;
+        text-decoration-style: dotted;
+        color: var(--tertiary);
+    }
+
+    .tooltip::before {
+        content: "";
+        top: 100%;
+        width: 2em !important;
+        height: 2em !important;
+        border-radius: 50%;
+        background-color: transparent !important;
+    }
+
+    .tooltip::after {
+        content: attr(data-tooltip);
+        top: 130%;
+        padding: 0.5em;
+        border-radius: 5px;
+        max-width: 20vw;
+    }
+
+    .tooltip::before, .tooltip::after {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #00000088;
+        filter: drop-shadow(0.1em 0.3em 0.4em var(--tertiary));
+        -webkit-backdrop-filter: drop-shadow(0.1em 0.3em 0.4em var(--tertiary));
+        backdrop-filter: blur(0.75em);
+        -webkit-backdrop-filter: blur(0.75em);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        width: max-content;
+        z-index: 100;
+        color: #fff;
+    }
+
+    .tooltip:hover::before, .tooltip:hover::after {
+        opacity: 1;
+    }
+
+    .tooltip:has(~ *)::after {
+        left: auto;
+        right: 0;
+        transform: translateX(0);
     }
 }
 
 @media (max-width: 999px) {
     .content {
-        display: flex;
         flex-direction: column;
-        align-items: baseline;
+        align-items: baseline !important;
         align-content: stretch;
         justify-content: space-between;
     }
 
-    .image {
+    .imageContainer {
         width: 100%;
         height: calc(100vh - 10rem);
+        justify-content: center;
+        flex-direction: column;
+        margin: 1em 0;
+    }
+
+    .imageSub {
+        width: 98%;
+        height: calc(100vh - 12rem);
+    }
+
+    .imageLayers {
+        position: relative;
+        aspect-ratio: 5/7;
+        display: grid;
+        place-items: center;
+    }
+
+    .imageLayers img {
+        position: absolute;
+        object-fit: contain;
     }
 
     .mobileHidden {
@@ -176,30 +299,31 @@ a:hover {
     .stepsContainer {
         width: 100%;
         height: 25vh;
-        display: flex;
-        align-items: center;
         flex-direction: column;
         border-top: 1px solid #333;
     }
 
     .steps {
         width: 100%;
-        height: calc(25vh - 2vw);
+        height: 23vh;
         position: relative;
         margin: 0.5rem;
         display: flex;
         flex-direction: row;
+        overflow-x: scroll !important;
     }
 
     .stepCard {
-        max-height: 8rem;
+        height: 20vh;
+        min-width: fit-content !important;
+        margin: 0.5em;
+        padding: 0 0.5em;
+        border-width: 1vh;
     }
 
     .descriptionContainer {
         width: 100%;
         height: 45vh;
-        display: flex;
-        align-items: center;
         flex-direction: column;
         border-top: 1px solid #333;
     }
@@ -213,5 +337,10 @@ a:hover {
 
     .mobileMarginAdd {
         margin-left: 0.5rem;
+    }
+
+    .tooltip {
+        position: relative;
+        color: var(--tertiary);
     }
 }
