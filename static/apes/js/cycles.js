@@ -1,20 +1,20 @@
 const CYCLES = [
     {
         title: "Carbon",
-        base_image: "./src/c/bkg.png",
+        base_image: "./static/apes/src/c/bkg.png",
         layer_images: [
-            "./src/c/0000.png",
-            "./src/c/0001.png",
-            "./src/c/0002.png",
-            "./src/c/0003.png",
-            "./src/c/0004.png",
-            "./src/c/0005.png",
+            "./static/apes/src/c/0000.png",
+            "./static/apes/src/c/0001.png",
+            "./static/apes/src/c/0002.png",
+            "./static/apes/src/c/0003.png",
+            "./static/apes/src/c/0004.png",
+            "./static/apes/src/c/0005.png",
         ],
         steps: [
             {
                 title: "All",
                 brief: "The carbon cycle moves carbon through Earth's atmosphere, oceans, soil, and organisms.",
-                html: "The carbon cycle is essential for regulating Earth's climate and supporting life by moving carbon through Earth's systems. <ul><li><span class=\"tooltip\">Photosynthesis</span></li><li><span class=\"tooltip\">Respiration</span></li><li>Consumption</li><li>Decomposition</li><li><span class=\"tooltip\">Sedimentation</span></li><li><span class=\"tooltip\">Combustion</span></li><li>Ocean absorption</li><li>Marine shell formation</li><li>Volcanic activity</li></ul> It connects the <span class=\"tooltip\">biosphere</span>, <span class=\"tooltip\">hydrosphere</span>, <span class=\"tooltip\">lithosphere</span>, and atmosphere to maintain a stable environment.",
+                html: 'The carbon cycle is essential for regulating Earth\'s climate and supporting life by moving carbon through Earth\'s systems. <ul><li><span class="tooltip">Photosynthesis</span></li><li><span class="tooltip">Respiration</span></li><li>Consumption</li><li>Decomposition</li><li><span class="tooltip">Sedimentation</span></li><li><span class="tooltip">Combustion</span></li><li>Ocean absorption</li><li>Marine shell formation</li><li>Volcanic activity</li></ul> It connects the <span class="tooltip">biosphere</span>, <span class="tooltip">hydrosphere</span>, <span class="tooltip">lithosphere</span>, and atmosphere to maintain a stable environment.',
             },
             {
                 title: "Necessitatibus autem",
